@@ -2,9 +2,22 @@ import React from 'react'
 import { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { changeTodo } from '../actions'
+
 class TodoList extends Component {
     state = {
         newTodoText: ''
+    }
+
+    changeHandler = e => {
+        this.setState ({
+            [e.target.name]: e.target.value
+        })  
+    }
+
+    updateTodo = e => {
+        e.preventDefault()
+        this.props.changeTodo(this.state.newTodoText)
     }
 
     render() {
@@ -14,6 +27,16 @@ class TodoList extends Component {
                 <div>
                 {this.props.todos.map(todo => todo.todo)}
                 </div>
+
+                <form onSubmit={this.updateTodo}>
+                    <input
+                    name="newTodoText"
+                    onChange={this.changeHandler}
+                    placeholder="Add to do..."
+                    value={this.state.newTodoText}              
+                    ></input>
+                    <button type="submit">Add Todo</button>
+                </form>
             </div>
         )
     }
@@ -36,5 +59,5 @@ const MapStateToProps = state => {
 
 export default connect(
     MapStateToProps, 
-    {}
+    {changeTodo}
     )(TodoList)
