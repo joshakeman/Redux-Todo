@@ -4,6 +4,6 @@ export const changeTodo = todo => {
     console.log(todo)
     return {
         type: CHANGE_TODO,
-        payload: { todo, completed: false }
+        payload: todo
     }
 }

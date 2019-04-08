@@ -24,8 +24,8 @@ class TodoList extends Component {
         return (
             <div>
                 <h1>Todo List </h1>
-                <div>
-                {this.props.todos.map(todo => todo.todo)}
+                <div className="todo-container">
+                {this.props.todos.map(todo => <p>{todo.todo}</p>)}
                 </div>
 
                 <form onSubmit={this.updateTodo}>
@@ -48,7 +48,7 @@ class TodoList extends Component {
 const MapStateToProps = state => {
     console.log(state)
     return {
-        todos: state.todos
+        todos: state
     }
 }
 
