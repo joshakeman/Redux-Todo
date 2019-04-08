@@ -6,7 +6,12 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 const reducer = () => ({
-    todos: []
+    todos: [
+        {
+            todo: 'Walk the dog',
+            completed: false
+        }
+    ]
 })
 
 const store = createStore(reducer)

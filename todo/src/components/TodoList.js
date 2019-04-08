@@ -9,7 +9,12 @@ class TodoList extends Component {
 
     render() {
         return (
-            <h1>Todo List </h1>
+            <div>
+                <h1>Todo List </h1>
+                <div>
+                {this.props.todos.map(todo => todo.todo)}
+                </div>
+            </div>
         )
     }
 }
@@ -18,6 +23,7 @@ class TodoList extends Component {
 //and returns the piece of the state tree needed for this component
 
 const MapStateToProps = state => {
+    console.log(state)
     return {
         todos: state.todos
     }
@@ -28,4 +34,7 @@ const MapStateToProps = state => {
 //the function brings in pieces of the state tree to this component
 //the object brings in action creators needed in the component
 
-export default connect(MapStateToProps, {})(TodoList)
+export default connect(
+    MapStateToProps, 
+    {}
+    )(TodoList)
