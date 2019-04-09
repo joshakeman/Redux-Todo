@@ -1,5 +1,6 @@
 import { CHANGE_TODO } from '../actions'
 import { TOGGLE_TODO } from '../actions'
+import { CLEAR_LIST } from '../actions'
 
 const initialState = [
     {
@@ -25,6 +26,9 @@ const reducer = (state = initialState, action) => {
         case TOGGLE_TODO:
             return state.map(todo => action.payload === todo.id ? {...todo, completed: !todo.completed} : todo)
             
+        case CLEAR_LIST:
+            return state.filter(todo => todo.completed === false)
+        
         
             default:
             return state

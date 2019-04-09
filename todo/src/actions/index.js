@@ -8,10 +8,18 @@ export const changeTodo = todo => {
 }
 
 export const TOGGLE_TODO = "TOGGLE_TODO"
-export const toggleTodo = todo => {
-    console.log(todo)
+export const toggleTodo = todoId => {
+    console.log(todoId)
     return {
         type: TOGGLE_TODO,
-        payload: todo
+        payload: todoId
+    }
+}
+
+export const CLEAR_LIST = "CLEAR_LIST"
+export const clearList = todo => {
+    console.log(todo)
+    return {
+        type: CLEAR_LIST,
     }
 }

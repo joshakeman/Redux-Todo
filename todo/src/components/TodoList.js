@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { changeTodo } from '../actions'
 import { toggleTodo } from '../actions'
+import { clearList } from '../actions'
 
 class TodoList extends Component {
     state = {
@@ -19,12 +20,19 @@ class TodoList extends Component {
     updateTodo = e => {
         e.preventDefault()
         this.props.changeTodo(this.state.newTodoText)
+        this.setState ({
+            newTodoText: ''
+        })
     }
 
     toggleTodo = id => {
-    
         this.props.toggleTodo(id)
 
+    }
+
+    clearList = e => {
+        e.preventDefault()
+        this.props.clearList()
     }
 
     render() {
@@ -32,7 +40,7 @@ class TodoList extends Component {
             <div>
                 <h1>Todo List </h1>
                 <div className="todo-container">
-                {this.props.todos.map(todo => <p onClick={() => this.toggleTodo(todo.id)}>{todo.todo}</p>)}
+                {this.props.todos.map(todo => <p className="individualTodos" onClick={() => this.toggleTodo(todo.id)}>{todo.todo}</p>)}
                 </div>
 
                 <form onSubmit={this.updateTodo}>
@@ -43,6 +51,7 @@ class TodoList extends Component {
                     value={this.state.newTodoText}              
                     ></input>
                     <button type="submit">Add Todo</button>
+                    <button onClick={this.clearList}>Clear List</button>
                 </form>
             </div>
         )
@@ -66,5 +75,5 @@ const MapStateToProps = state => {
 
 export default connect(
     MapStateToProps, 
-    {changeTodo, toggleTodo}
+    {changeTodo, toggleTodo, clearList}
     )(TodoList)
