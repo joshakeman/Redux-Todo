@@ -40,7 +40,7 @@ class TodoList extends Component {
             <div>
                 <h1>Todo List </h1>
                 <div className="todo-container">
-                {this.props.todos.map(todo => <p className="individualTodos" onClick={() => this.toggleTodo(todo.id)}>{todo.todo}</p>)}
+                {this.props.todos.map(todo => <p className={"individualTodos " + (todo.completed ? "cross-out" : "")} onClick={() => this.toggleTodo(todo.id)}>{todo.todo}</p>)}
                 </div>
 
                 <form onSubmit={this.updateTodo}>

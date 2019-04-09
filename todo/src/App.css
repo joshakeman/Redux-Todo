@@ -35,3 +35,7 @@
 .individualTodos {
   cursor: pointer;
 }
+
+.cross-out {
+  text-decoration: line-through;
+}
