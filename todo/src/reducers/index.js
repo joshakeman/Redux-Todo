@@ -23,13 +23,8 @@ const reducer = (state = initialState, action) => {
                 }
             ]
         case TOGGLE_TODO:
-            const foundTodo = state.find(todo => action.payload === todo.id)
-            console.log(foundTodo)
-            return {
-                 ...state,
-                 [foundTodo.completed]: true
-                
-            }    
+            return state.map(todo => action.payload === todo.id ? {...todo, completed: !todo.completed} : todo)
+            
         
             default:
             return state
